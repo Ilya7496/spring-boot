@@ -1,0 +1,156 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Users</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:switch="${users}">-->
+<!--    <h2 th:case="null">No users found!</h2>-->
+<!--    <div th:case="*">-->
+<!--        <h2>Users</h2>-->
+<!--        <table>-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>Id</th>-->
+<!--                <th>Name</th>-->
+<!--                <th>Email</th>-->
+<!--                <th>Phone</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="user : ${users}">-->
+<!--                <td th:text="${user.id}"></td>-->
+<!--                <td th:text="${user.name}"></td>-->
+<!--                <td th:text="${user.email}"></td>-->
+<!--                <td th:text="${user.phone}"></td>-->
+<!--                <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>-->
+<!--                <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--    <p><a href="/user-create">Create user</a></p>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <style>
+        body {
+            font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #d1d1d6;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #007aff;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        td {
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        a {
+            color: #007aff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .create-user-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #007aff;
+        }
+
+        .create-user-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=San+Francisco&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container" th:switch="${users}">
+    <h2 th:case="null">No users found!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.phone}"></td>
+                <td>
+                    <a th:href="@{user-update/{id}(id=${user.id})}">Edit</a>
+                    <a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="create-user-link"><a href="/user-create">Create user</a></p>
+</div>
+</body>
+</html>
+
+
+
