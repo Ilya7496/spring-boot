@@ -62,7 +62,7 @@
 package com.example.spring_boot.controller;
 
 import com.example.spring_boot.model.User;
-import com.example.spring_boot.service.UserServiceImp;
+import com.example.spring_boot.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,10 +75,10 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    private final UserServiceImp userService;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserServiceImp userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
